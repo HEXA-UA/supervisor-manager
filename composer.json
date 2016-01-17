@@ -1,0 +1,21 @@
+{
+    "name": "supervisor-manager/yii2-supervisor-manager",
+    "description": "Supervisor manager module for Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","supervisor","supervisor-manager"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AlexyAV",
+            "email": "avpretty@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "hexa\\supervisor\\": ""
+        }
+    }
+}
