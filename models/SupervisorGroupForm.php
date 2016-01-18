@@ -1,8 +1,8 @@
 <?php
 
-namespace frontend\modules\supervisor\models;
+namespace supervisormanager\models;
 
-use frontend\modules\supervisor\components\supervisor\config\ProcessConfig;
+use supervisormanager\components\supervisor\config\ProcessConfig;
 use yii\base\Model;
 
 class SupervisorGroupForm extends Model

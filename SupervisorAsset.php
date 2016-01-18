@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\modules\supervisor;
+namespace supervisormanager;
 
 use yii\web\AssetBundle;
 
@@ -9,7 +9,7 @@ class SupervisorAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@frontend/modules/supervisor/assets';
+    public $sourcePath = 'assets';
 
     /**
      * @inheritdoc

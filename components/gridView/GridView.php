@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\modules\supervisor\components\gridView;
+namespace supervisormanager\components\gridView;
 
 class GridView extends \yii\grid\GridView
 {

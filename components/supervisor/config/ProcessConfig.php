@@ -1,8 +1,8 @@
 <?php
 
-namespace frontend\modules\supervisor\components\supervisor\config;
+namespace supervisormanager\components\supervisor\config;
 
-use frontend\modules\supervisor\components\supervisor\exceptions\ProcessConfigException;
+use supervisormanager\components\supervisor\exceptions\ProcessConfigException;
 use yii\base\Component;
 
 /**

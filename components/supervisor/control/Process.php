@@ -1,11 +1,11 @@
 <?php
 
-namespace frontend\modules\supervisor\components\supervisor\control;
+namespace supervisormanager\components\supervisor\control;
 
-use frontend\modules\supervisor\components\supervisor\config\ProcessConfig;
-use frontend\modules\supervisor\components\supervisor\ConnectionInterface;
-use frontend\modules\supervisor\components\supervisor\exceptions\ProcessException;
-use frontend\modules\supervisor\components\supervisor\Supervisor;
+use supervisormanager\components\supervisor\config\ProcessConfig;
+use supervisormanager\components\supervisor\ConnectionInterface;
+use supervisormanager\components\supervisor\exceptions\ProcessException;
+use supervisormanager\components\supervisor\Supervisor;
 
 /**
  * Class Process

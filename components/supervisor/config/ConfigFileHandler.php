@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\modules\supervisor\components\supervisor\config;
+namespace supervisormanager\components\supervisor\config;
 
 use yii\base\Component;
 

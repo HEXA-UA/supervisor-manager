@@ -1,9 +1,7 @@
 <?php
-namespace frontend\modules\supervisor\components\supervisor\control;
+namespace supervisormanager\components\supervisor\control;
+use supervisormanager\components\supervisor\Supervisor;
 
-use frontend\modules\supervisor\components\supervisor\config\ProcessConfig;
-use frontend\modules\supervisor\components\supervisor\exceptions\SupervisorException;
-use frontend\modules\supervisor\components\supervisor\Supervisor;
 
 /**
  * Class MainProcess

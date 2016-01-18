@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\modules\supervisor\components\supervisor;
+namespace supervisormanager\components\supervisor;
 
 /**
  * Interface ConnectionInterface

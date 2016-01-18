@@ -1,15 +1,15 @@
 <?php
 
-namespace frontend\modules\supervisor\components\supervisor;
+namespace supervisormanager\components\supervisor;
 
+use supervisormanager\components\supervisor\exceptions\AuthenticationException;
+use supervisormanager\components\supervisor\exceptions\ConnectionException;
+use supervisormanager\components\supervisor\exceptions\SupervisorException;
 use yii\base\Component;
 use Zend\XmlRpc\Client as XmlRpcClient;
 use Zend\XmlRpc\Client\Exception\HttpException;
 use Zend\XmlRpc\Client\Exception\FaultException;
 use Zend\Http\Client\Adapter\Exception\RuntimeException;
-use frontend\modules\supervisor\components\supervisor\exceptions\ConnectionException;
-use frontend\modules\supervisor\components\supervisor\exceptions\SupervisorException;
-use frontend\modules\supervisor\components\supervisor\exceptions\AuthenticationException;
 
 /**
  * Class Connection

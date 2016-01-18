@@ -1,11 +1,11 @@
 <?php
 
-namespace frontend\modules\supervisor;
+namespace supervisormanager;
 
+use supervisormanager\components\supervisor\ConnectionInterface;
+use supervisormanager\components\supervisor\Supervisor;
 use yii\base\Event;
 use Zend\XmlRpc\Client;
-use frontend\modules\supervisor\components\supervisor\Supervisor;
-use frontend\modules\supervisor\components\supervisor\ConnectionInterface;
 
 /**
  * @property array supervisorConnection

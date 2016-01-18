@@ -1,10 +1,9 @@
 <?php
 
-namespace frontend\modules\supervisor\components\supervisor\control;
+namespace supervisormanager\components\supervisor\control;
 
-use frontend\modules\supervisor\components\supervisor\Config;
-use frontend\modules\supervisor\components\supervisor\ConnectionInterface;
-use frontend\modules\supervisor\components\supervisor\Supervisor;
+use supervisormanager\components\supervisor\ConnectionInterface;
+use supervisormanager\components\supervisor\Supervisor;
 use Zend\XmlRpc\Client;
 
 /**

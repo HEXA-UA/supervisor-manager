@@ -1,12 +1,13 @@
 <?php
-namespace frontend\modules\supervisor\components\widgets;
+
+namespace supervisormanager\components\widgets;
 
 use yii\base\Widget;
 
 /**
  * Class ProcessPriorityWidget
  *
- * @package frontend\modules\supervisor\components\widgets
+ * @package supervisormanager\components\widgets
  */
 class ProcessPriorityWidget extends Widget
 {
