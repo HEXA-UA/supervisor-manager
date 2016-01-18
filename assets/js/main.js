@@ -1,39 +1,41 @@
-$(document).on('ready pjax:success', function() {
+function SupervisorManager()
+{
+    /**
+     * Initialize supervisor
+     */
+    this.init = function ()
+    {
+        this.setEventHandlers();
+    };
 
-    $(document).find('.processControl').on('click', function(event) {
+    /**
+     * Handle server response about supervisor control.
+     *
+     * @param response
+     * @returns {boolean}
+     */
+    function responseHandler(response)
+    {
+        if (response['isSuccessful']) {
+            $.pjax.reload({container:'#supervisor', timeout: 2000});
 
-        var processName = $(this).data('process-name'),
+            return true;
+        }
 
-            actionType = $(this).data('action-type');
+        var logModal = $('#errorModal');
 
-        $(this).button('loading');
+        logModal.find('.modal-body p').html(response['error']);
 
-        $.post('/supervisor/default/process-control', {
-            processName: processName,
-            actionType: actionType
-        }, function(response) {
+        logModal.modal();
+    }
 
-            if (response['isSuccessful']) {
-
-                $.pjax.reload({container:'#supervisor', timeout: 2000});
-
-                return true;
-            }
-
-            var modal = $('#errorModal');
-
-            modal.find('.modal-body p').html(
-                response.error
-            );
-
-            modal.modal();
-
-            $(this).button('reset');
-        });
-    });
-
-    $(document).find('.supervisorControl').on('click', function(event) {
-
+    /**
+     * Event handler for main supervisor process control.
+     *
+     * @param event
+     */
+    this.supervisorControl = function(event)
+    {
         var actionType = $(this).data('action');
 
         if (actionType == 'refresh') {
@@ -44,25 +46,33 @@ $(document).on('ready pjax:success', function() {
 
         $.post('/supervisor/default/supervisor-control', {
             actionType: actionType
-        }, function(response) {
+        }, responseHandler);
+    };
 
-            if (response['isSuccessful']) {
+    /**
+     * Event handler for all supervisor sub processes control.
+     *
+     * @param event
+     */
+    this.processControl = function(event)
+    {
+        var processName = $(this).data('process-name'),
 
-                $.pjax.reload({container:'#supervisor', timeout: 2000});
+            actionType = $(this).data('action-type');
 
-                return true;
-            }
+        $.post('/supervisor/default/process-control', {
+            processName: processName,
+            actionType: actionType
+        }, responseHandler);
+    };
 
-            var logModal = $('#errorModal');
-
-            logModal.find('.modal-body p').html(response['error']);
-
-            logModal.modal();
-        });
-    });
-
-    $(document).find('.groupControl [data-action]').on('click', function(event) {
-
+    /**
+     * Event handler for group of supervisor processes.
+     *
+     * @param event
+     */
+    this.groupControl = function(event)
+    {
         var actionUrl = '/supervisor/default/group-control';
 
         if ($(event.currentTarget).hasClass('processConfigControl')) {
@@ -76,25 +86,11 @@ $(document).on('ready pjax:success', function() {
         $.post(actionUrl, {
             actionType: actionType,
             groupName: groupName
-        }, function(response) {
+        }, responseHandler);
+    };
 
-            if (response['isSuccessful']) {
-
-                $.pjax.reload({container:'#supervisor', timeout: 2000});
-
-                return true;
-            }
-
-            var logModal = $('#errorModal');
-
-            logModal.find('.modal-body p').html(response['error']);
-
-            logModal.modal();
-        });
-    });
-
-    $(document).find('.processList .showLog').on('click', function(event) {
-
+    this.showLog = function(event)
+    {
         var processName = $(this).data('process-name'),
 
             logType = $(this).data('log-type');
@@ -120,5 +116,24 @@ $(document).on('ready pjax:success', function() {
 
             logModal.modal();
         });
-    });
+    };
+
+    this.setEventHandlers = function()
+    {
+        var self = this;
+
+        $(document).on(
+            'click', 'a.processControl', self.processControl
+        ).on(
+            'click', '.supervisorControl', self.supervisorControl
+        ).on(
+            'click', '.groupControl [data-action]', self.groupControl
+        ).on(
+            'click', '.processList .showLog', self.showLog
+        );
+    };
+}
+
+$(document).on('ready', function() {
+    (new SupervisorManager()).init();
 });
