@@ -1,0 +1,180 @@
+<?php
+
+namespace supervisormanager\components\supervisor\config;
+
+use supervisormanager\components\supervisor\config\ConfigFileHandler;
+use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\visitor\vfsStreamStructureVisitor;
+
+class ConfigFileHandlerTest extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @var \org\bovigo\vfs\vfsStreamDirectory
+     */
+    private $configDir;
+
+    /**
+     * @var ConfigFileHandler
+     */
+    private $configHandler;
+
+    /**
+     * @var string
+     */
+    private $configDirPath;
+
+    public function setUp()
+    {
+        $this->configDir = vfsStream::setup('root', 777, ['test' => []]);
+
+        $this->configDirPath = $this->configDir->url()
+            . DIRECTORY_SEPARATOR . 'test';
+
+        $this->configHandler = new ConfigFileHandler(
+            'test-process', $this->configDirPath
+        );
+    }
+
+    public function testConstruct()
+    {
+        $this->assertFileExists(
+            $this->configDir->url() . DIRECTORY_SEPARATOR . 'test'
+        );
+
+        unset($configHandler);
+
+        new ConfigFileHandler('test-process', $this->configDirPath);
+
+        $this->assertEquals(
+            ['root' => ['test' => []]],
+            vfsStream::inspect(new vfsStreamStructureVisitor())->getStructure()
+        );
+    }
+
+    /**
+     * @depends testConstruct
+     */
+    public function testBackupConfig()
+    {
+        $configHandler = new ConfigFileHandler(
+            'test-process', __DIR__ . '/test-folder'
+        );
+
+        file_put_contents(
+            __DIR__ . '/test-folder/test.conf', "The new contents of the file"
+        );
+
+        $configHandler->backupConfig('test.zip');
+
+        $this->assertFileExists(
+            __DIR__ . '/test-folder/test.zip'
+        );
+
+        unlink(__DIR__ . '/test-folder/test.conf');
+    }
+
+    /**
+     * @depends testBackupConfig
+     */
+    public function testRestoreFromBackup()
+    {
+        $configHandler = new ConfigFileHandler(
+            'test-process', __DIR__ . '/test-folder'
+        );
+
+        file_put_contents(
+            __DIR__ . '/test-folder/test.conf', "The new contents of the file"
+        );
+
+        $configHandler->backupConfig('test.zip');
+
+        $this->assertFileExists(
+            __DIR__ . '/test-folder/test.zip'
+        );
+
+        $configHandler->restoreFromBackup('test.zip');
+
+        $this->assertFileExists(
+            __DIR__ . '/test-folder/test.conf'
+        );
+
+        unlink(__DIR__ . '/test-folder/test.conf');
+
+        unlink(__DIR__ . '/test-folder/test.zip');
+
+        rmdir(__DIR__ . '/test-folder');
+    }
+
+    public function testCreateConfig()
+    {
+        $configData = "command=task-runner";
+
+        $this->configHandler->createConfig('test-process', $configData);
+
+        $this->assertFileExists(
+            $this->configDirPath . DIRECTORY_SEPARATOR . 'test-process.conf'
+        );
+    }
+
+    /**
+     * @depends testCreateConfig
+     */
+    public function testGetProcessConfig()
+    {
+        $configData = "command=task-runner";
+
+        $this->configHandler->createConfig('test-process', $configData);
+
+        $this->assertFileExists(
+            $this->configDirPath . DIRECTORY_SEPARATOR . 'test-process.conf'
+        );
+
+        $this->assertEquals(
+            'command=task-runner', $this->configHandler->getProcessConfig()
+        );
+    }
+
+    /**
+     * @depends testGetProcessConfig
+     */
+    public function testDeleteGroup()
+    {
+        $configData = "command=task-runner";
+
+        $this->configHandler->createConfig('test-process', $configData);
+
+        $this->configHandler->getProcessConfig();
+
+        $this->assertFileExists(
+            $this->configDirPath . DIRECTORY_SEPARATOR . 'test-process.conf'
+        );
+
+        $this->configHandler->deleteGroup();
+
+        $this->assertFileNotExists(
+            $this->configDirPath . DIRECTORY_SEPARATOR . 'test-process.conf'
+        );
+    }
+
+    /**
+     * @depends testGetProcessConfig
+     */
+    public function testSaveConfig()
+    {
+        $configData = "command=task-runner";
+
+        $this->configHandler->createConfig('test-process', $configData);
+
+        $this->assertFileExists(
+            $this->configDirPath . DIRECTORY_SEPARATOR . 'test-process.conf'
+        );
+
+        $this->configHandler->getProcessConfig();
+
+        $this->configHandler->saveConfig('user=test');
+
+        $this->assertEquals(
+            'user=test', $this->configHandler->getProcessConfig()
+        );
+    }
+}
