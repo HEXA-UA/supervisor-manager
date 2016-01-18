@@ -1,5 +1,5 @@
 {
-    "name": "alexyav/supervisor-manager",
+    "name": "hexa/supervisor-manager",
     "description": "Supervisor manager module for Yii2",
     "type": "yii2-extension",
     "keywords": ["yii2","supervisor","supervisor-manager"],

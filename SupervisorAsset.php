@@ -9,7 +9,7 @@ class SupervisorAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = 'assets';
+    public $sourcePath = '@supervisormanager/assets';
 
     /**
      * @inheritdoc
