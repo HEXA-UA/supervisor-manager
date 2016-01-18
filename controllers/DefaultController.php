@@ -3,15 +3,15 @@
 namespace frontend\modules\supervisor\controllers;
 
 use common\components\filters\AjaxAccess;
-use frontend\modules\supervisor\components\supervisor\config\ConfigFileHandler;
-use frontend\modules\supervisor\components\supervisor\config\ProcessConfig;
-use frontend\modules\supervisor\components\supervisor\control\Group;
-use frontend\modules\supervisor\components\supervisor\control\MainProcess;
-use frontend\modules\supervisor\components\supervisor\control\Process;
-use frontend\modules\supervisor\components\supervisor\exceptions\ConnectionException;
-use frontend\modules\supervisor\components\supervisor\exceptions\SupervisorException;
-use frontend\modules\supervisor\components\supervisor\Supervisor;
-use frontend\modules\supervisor\models\SupervisorGroupForm;
+use supervisormanager\components\supervisor\config\ConfigFileHandler;
+use supervisormanager\components\supervisor\config\ProcessConfig;
+use supervisormanager\components\supervisor\control\Group;
+use supervisormanager\components\supervisor\control\MainProcess;
+use supervisormanager\components\supervisor\control\Process;
+use supervisormanager\components\supervisor\exceptions\ConnectionException;
+use supervisormanager\components\supervisor\exceptions\SupervisorException;
+use supervisormanager\components\supervisor\Supervisor;
+use supervisormanager\models\SupervisorGroupForm;
 use yii\base\Event;
 use yii\data\ArrayDataProvider;
 use yii\filters\AccessControl;
