@@ -1,12 +1,12 @@
 <?php
 namespace supervisormanager\components\supervisor\control;
-use supervisormanager\components\supervisor\Supervisor;
 
+use supervisormanager\components\supervisor\Supervisor;
 
 /**
  * Class MainProcess
  *
- * @package frontend\modules\supervisor\components\supervisor\control
+ * @package supervisormanager\components\supervisor\control
  */
 class MainProcess extends Supervisor
 {

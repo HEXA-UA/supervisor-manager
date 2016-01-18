@@ -8,7 +8,7 @@ use yii\base\Component;
 /**
  * Class ProcessConfig
  *
- * @package frontend\modules\supervisor\components\supervisor\config
+ * @package supervisormanager\components\supervisor\config
  */
 class ProcessConfig extends Component
 {

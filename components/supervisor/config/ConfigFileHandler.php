@@ -7,7 +7,7 @@ use yii\base\Component;
 /**
  * Class ConfigFileHandler
  *
- * @package frontend\modules\supervisor\components\supervisor\config
+ * @package supervisormanager\components\supervisor\config
  */
 class ConfigFileHandler extends Component
 {

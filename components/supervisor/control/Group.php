@@ -9,7 +9,7 @@ use Zend\XmlRpc\Client;
 /**
  * Class Group
  *
- * @package frontend\modules\supervisor\components\supervisor\control
+ * @package supervisormanager\components\supervisor\control
  */
 class Group extends Supervisor
 {

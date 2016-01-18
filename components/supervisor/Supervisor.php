@@ -7,7 +7,7 @@ use yii\base\Component;
 /**
  * Class Supervisor
  *
- * @package frontend\modules\supervisor\components\supervisor
+ * @package supervisormanager\components\supervisor
  */
 class Supervisor extends Component
 {

@@ -10,7 +10,7 @@ use supervisormanager\components\supervisor\Supervisor;
 /**
  * Class Process
  *
- * @package frontend\modules\supervisor\components\supervisor\control
+ * @package supervisormanager\components\supervisor\control
  */
 class Process extends Supervisor
 {

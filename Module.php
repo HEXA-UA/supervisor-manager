@@ -12,7 +12,7 @@ use Zend\XmlRpc\Client;
  */
 class Module extends \yii\base\Module
 {
-    public $controllerNamespace = 'frontend\modules\supervisor\controllers';
+    public $controllerNamespace = 'supervisormanager\controllers';
 
     public function init()
     {

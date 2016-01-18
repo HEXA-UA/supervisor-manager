@@ -1,5 +1,4 @@
 <?php
-/* @var $supervisorGroupForm frontend\modules\supervisor\models\SupervisorGroupForm */
 
 use yii\helpers\Html;
 use yii\helpers\Url;

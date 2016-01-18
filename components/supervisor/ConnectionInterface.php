@@ -5,7 +5,7 @@ namespace supervisormanager\components\supervisor;
 /**
  * Interface ConnectionInterface
  *
- * @package frontend\modules\supervisor\components\supervisor
+ * @package supervisormanager\components\supervisor
  */
 interface ConnectionInterface
 {

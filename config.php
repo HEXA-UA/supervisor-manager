@@ -1,5 +1,6 @@
 <?php
-use frontend\modules\supervisor\components\supervisor\Connection;
+
+use supervisormanager\components\supervisor\Connection;
 
 return [
         'components' => [],

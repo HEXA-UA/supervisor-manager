@@ -1,6 +1,6 @@
 <?php
 
-use frontend\modules\supervisor\SupervisorAsset;
+use supervisormanager\SupervisorAsset;
 
 SupervisorAsset::register($this);
 

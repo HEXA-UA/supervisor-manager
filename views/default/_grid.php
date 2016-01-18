@@ -1,8 +1,8 @@
 <?php
 
 
-use frontend\modules\supervisor\components\gridView\GridView;
-use frontend\modules\supervisor\components\widgets\ProcessPriorityWidget;
+use supervisormanager\components\gridView\GridView;
+use supervisormanager\components\widgets\ProcessPriorityWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 

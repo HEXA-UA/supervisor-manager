@@ -14,7 +14,7 @@ use Zend\Http\Client\Adapter\Exception\RuntimeException;
 /**
  * Class Connection
  *
- * @package frontend\modules\supervisor\components\supervisor
+ * @package supervisormanager\components\supervisor
  */
 class Connection extends Component implements ConnectionInterface
 {

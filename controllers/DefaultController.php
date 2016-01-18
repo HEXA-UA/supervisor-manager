@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\modules\supervisor\controllers;
+namespace supervisormanager\controllers;
 
 use common\components\filters\AjaxAccess;
 use supervisormanager\components\supervisor\config\ConfigFileHandler;
