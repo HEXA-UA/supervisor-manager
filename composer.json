@@ -1,5 +1,5 @@
 {
-    "name": "supervisor-manager/yii2-supervisor-manager",
+    "name": "alexyav/supervisor-manager",
     "description": "Supervisor manager module for Yii2",
     "type": "yii2-extension",
     "keywords": ["yii2","supervisor","supervisor-manager"],
@@ -11,11 +11,12 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "*"
+        "yiisoft/yii2": "*",
+        "zendframework/zend-xmlrpc": "*"
     },
     "autoload": {
         "psr-4": {
-            "hexa\\supervisor\\": ""
+            "supervisormanager\\": ""
         }
     }
 }
