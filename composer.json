@@ -3,6 +3,7 @@
     "description": "Supervisor manager module for Yii2",
     "type": "yii2-extension",
     "keywords": ["yii2","supervisor","supervisor-manager"],
+    "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
         {
