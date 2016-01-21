@@ -12,6 +12,14 @@ use Zend\XmlRpc\Client;
  */
 class Module extends \yii\base\Module
 {
+    /**
+     * @var array Supervisor client authenticate data.
+     */
+    public $authData = [];
+
+    /**
+     * @var string
+     */
     public $controllerNamespace = 'supervisormanager\controllers';
 
     public function init()
@@ -25,6 +33,10 @@ class Module extends \yii\base\Module
         );
 
         \Yii::configure($this, require(__DIR__ . '/config.php'));
+
+        $this->params['supervisorConnection'] = array_merge(
+            $this->params['supervisorConnection'], $this->authData
+        );
 
         $this->registerIoC();
     }
