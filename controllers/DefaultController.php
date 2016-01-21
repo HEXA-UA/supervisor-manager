@@ -2,7 +2,7 @@
 
 namespace supervisormanager\controllers;
 
-use common\components\filters\AjaxAccess;
+use supervisormanager\components\filters\AjaxAccess;
 use supervisormanager\components\supervisor\config\ConfigFileHandler;
 use supervisormanager\components\supervisor\config\ProcessConfig;
 use supervisormanager\components\supervisor\control\Group;
