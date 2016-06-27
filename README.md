@@ -2,6 +2,8 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/supervisor-manager/yii2-supervisor-manager.svg)](https://packagist.org/packages/supervisor-manager/yii2-supervisor-manager)
 
+[![License](https://img.shields.io/packagist/l/supervisor-manager/yii2-supervisor-manager.svg?style=flat-square)](https://packagist.org/packages/supervisor-manager/yii2-supervisor-manager)
+
 Provides a graphical interface to the [supervisor](http://supervisord.org/) process manager. This package is written to work with the Yii2 framework.
 To use this package you should have already installed supervisor on your system.
 
