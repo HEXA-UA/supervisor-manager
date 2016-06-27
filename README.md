@@ -4,7 +4,7 @@ Provides a graphical interface to the [supervisor](http://supervisord.org/) proc
 After install of supervisor you should update supervisor.conf by adding new config path:
 ```
 [include]
-files = /var/www/html/seo/common/config/supervisor/*.conf
+files = {project_path}/common/config/supervisor/*.conf
 ```
 ##Installation
 Simply add to your composer.json
