@@ -1,5 +1,6 @@
-# Supervisor Manager [![Build Status](https://travis-ci.org/HEXA-UA/supervisor-manager.svg?branch=master)](https://travis-ci.org/HEXA-UA/supervisor-manager)
+# Supervisor Manager
 
+[![Build Status](https://travis-ci.org/HEXA-UA/supervisor-manager.svg?branch=master)](https://travis-ci.org/HEXA-UA/supervisor-manager)
 [![Total Downloads](https://img.shields.io/packagist/dt/supervisor-manager/yii2-supervisor-manager.svg)](https://packagist.org/packages/supervisor-manager/yii2-supervisor-manager)
 [![Latest Stable Version](https://img.shields.io/packagist/v/supervisor-manager/yii2-supervisor-manager.svg)](https://packagist.org/packages/supervisor-manager/yii2-supervisor-manager)
 [![License](https://img.shields.io/packagist/l/supervisor-manager/yii2-supervisor-manager.svg)](https://packagist.org/packages/supervisor-manager/yii2-supervisor-manager)
