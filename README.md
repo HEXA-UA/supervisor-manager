@@ -1,5 +1,6 @@
 # Supervisor Manager
 
+[![Total Downloads](https://img.shields.io/packagist/dt/supervisor-manager/yii2-supervisor-manager.svg)](https://packagist.org/packages/supervisor-manager/yii2-supervisor-manager)
 [![Latest Stable Version](https://img.shields.io/packagist/v/supervisor-manager/yii2-supervisor-manager.svg)](https://packagist.org/packages/supervisor-manager/yii2-supervisor-manager)
 [![License](https://img.shields.io/packagist/l/supervisor-manager/yii2-supervisor-manager.svg)](https://packagist.org/packages/supervisor-manager/yii2-supervisor-manager)
 
