@@ -1,4 +1,4 @@
-<phpunit convertWarningsToExceptions="false" bootstrap="../../../vendor/autoload.php">
+<phpunit convertWarningsToExceptions="false">
     <testsuites>
         <testsuite name="supervisor">
             <directory>components/supervisor</directory>
@@ -9,8 +9,7 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">components/supervisor</directory>
             <exclude>
-                <!--<directory suffix=".php">../frontend/modules/supervisor/components/supervisor/widget</directory>-->
-                <!--<file>/var/www/html/seo/frontend/modules/supervisor/components/supervisor/ConnectionInterface.php</file>-->
+                <directory>./vendor</directory>
             </exclude>
         </whitelist>
     </filter>
