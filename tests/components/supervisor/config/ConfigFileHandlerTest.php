@@ -56,21 +56,29 @@ class ConfigFileHandlerTest extends \PHPUnit_Framework_TestCase
      */
     public function testBackupConfig()
     {
+        $testFolderPath = __DIR__ . '/test-folder';
+
         $configHandler = new ConfigFileHandler(
-            'test-process', __DIR__ . '/test-folder'
+            'test-process', $testFolderPath
         );
 
+        chmod($testFolderPath, 0777);
+
         file_put_contents(
-            __DIR__ . '/test-folder/test.conf', "The new contents of the file"
+            $testFolderPath . '/test.conf', "The new contents of the file"
         );
 
         $configHandler->backupConfig('test.zip');
 
         $this->assertFileExists(
-            __DIR__ . '/test-folder/test.zip'
+            $testFolderPath . '/test.zip'
         );
 
-        unlink(__DIR__ . '/test-folder/test.conf');
+        unlink($testFolderPath . '/test.conf');
+
+        unlink($testFolderPath . '/test.zip');
+
+        rmdir($testFolderPath);
     }
 
     /**
@@ -78,31 +86,35 @@ class ConfigFileHandlerTest extends \PHPUnit_Framework_TestCase
      */
     public function testRestoreFromBackup()
     {
+        $testFolderPath = __DIR__ . '/test-folder';
+
         $configHandler = new ConfigFileHandler(
-            'test-process', __DIR__ . '/test-folder'
+            'test-process', $testFolderPath
         );
 
+        chmod($testFolderPath, 0777);
+
         file_put_contents(
-            __DIR__ . '/test-folder/test.conf', "The new contents of the file"
+            $testFolderPath . '/test.conf', "The new contents of the file"
         );
 
         $configHandler->backupConfig('test.zip');
 
         $this->assertFileExists(
-            __DIR__ . '/test-folder/test.zip'
+            $testFolderPath . '/test.zip'
         );
 
         $configHandler->restoreFromBackup('test.zip');
 
         $this->assertFileExists(
-            __DIR__ . '/test-folder/test.conf'
+            $testFolderPath . '/test.conf'
         );
 
-        unlink(__DIR__ . '/test-folder/test.conf');
+        unlink($testFolderPath . '/test.conf');
 
-        unlink(__DIR__ . '/test-folder/test.zip');
+        unlink($testFolderPath . '/test.zip');
 
-        rmdir(__DIR__ . '/test-folder');
+        rmdir($testFolderPath);
     }
 
     public function testCreateConfig()
