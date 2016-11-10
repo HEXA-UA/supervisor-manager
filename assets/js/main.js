@@ -42,6 +42,12 @@ function SupervisorManager()
             $.pjax.reload({container:'#supervisor', timeout: 2000});
 
             return;
+
+        } else if(actionType == 'restart') {
+            var doRestart = confirm('Restart supervisor? All processes will be killed');
+            if(!doRestart) {
+                return;
+            }
         }
 
         $.post('/supervisor/default/supervisor-control', {
