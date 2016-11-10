@@ -108,6 +108,16 @@ class MainProcess extends Supervisor
     }
 
     /**
+     * Stop all supervisor processes
+     *
+     * @return mixed
+     */
+    public function stop()
+    {
+        return $this->_connection->callMethod('supervisor.stopAllProcesses');
+    }
+
+    /**
      * Start main supervisor process from console.
      *
      * @param int $delay
