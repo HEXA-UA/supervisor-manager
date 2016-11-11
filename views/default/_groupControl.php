@@ -14,6 +14,6 @@
         <li class="divider"></li>
         <li><a href="#" class="processConfigControl" data-action="deleteGroupProcess"><i class="fa fa-remove"></i> Remove process</a></li>
         <li class="divider"></li>
-        <li><a href="#" class="processConfigControl" data-action="deleteProcess"><i class="fa fa-minus-square"></i> Remove group</a></li>
+        <li><a href="#" class="processConfigControl" data-action="deleteProcess" data-need-confirm><i class="fa fa-minus-square"></i> Remove group</a></li>
     </ul>
 </div>

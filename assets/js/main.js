@@ -85,9 +85,15 @@ function SupervisorManager()
             actionUrl = '/supervisor/default/process-config-control'
         }
 
-        var actionType = $(this).data('action'),
+        var actionType  = $(this).data('action'),
+            groupName   = $(this).parents('.groupControl').data('groupName'),
+            needConfirm = $(this).data('need-confirm');
 
-            groupName = $(this).parents('.groupControl').data('groupName');
+        if (typeof needConfirm != 'undefined') {
+            if (!confirm("Are you sure?")) {
+                return;
+            }
+        }
 
         $.post(actionUrl, {
             actionType: actionType,
