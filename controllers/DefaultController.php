@@ -276,6 +276,22 @@ class DefaultController extends Controller
     }
 
     /**
+     * @return array
+     */
+    public function actionCountGroupProcesses()
+    {
+        $request = \Yii::$app->request;
+
+        $group = new ProcessConfig(
+            $request->post('groupName')
+        );
+
+        return [
+            'count' => $group->getNumprocs()
+        ];
+    }
+
+    /**
      * @param $view
      * @param $data
      *
