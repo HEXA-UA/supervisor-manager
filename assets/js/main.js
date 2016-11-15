@@ -42,6 +42,12 @@ function SupervisorManager()
             $.pjax.reload({container:'#supervisor', timeout: 2000});
 
             return;
+
+        } else if(actionType == 'restart') {
+            var doRestart = confirm('Restart supervisor? All processes will be killed');
+            if(!doRestart) {
+                return;
+            }
         }
 
         $.post('/supervisor/default/supervisor-control', {
@@ -76,17 +82,55 @@ function SupervisorManager()
         var actionUrl = '/supervisor/default/group-control';
 
         if ($(event.currentTarget).hasClass('processConfigControl')) {
-            actionUrl = '/supervisor/default/process-config-control'
+            actionUrl = '/supervisor/default/process-config-control';
         }
 
-        var actionType = $(this).data('action'),
+        var actionType  = $(this).data('action'),
+            groupName   = $(this).parents('.groupControl').data('groupName'),
+            needConfirm = $(this).data('need-confirm');
 
-            groupName = $(this).parents('.groupControl').data('groupName');
+        if (typeof needConfirm != 'undefined') {
+            if (!confirm("Are you sure?")) {
+                return;
+            }
+        }
 
         $.post(actionUrl, {
             actionType: actionType,
             groupName: groupName
         }, responseHandler);
+    };
+
+    /**
+     * Event handler to remove the process from the group supervisor
+     * @param event
+     */
+    this.groupProcessDelete = function(event)
+    {
+        var groupName = $(this).parents('.groupControl').data('groupName');
+
+        $.post('/supervisor/default/count-group-processes', {
+            groupName: groupName
+        }).done(function(response) {
+
+            var actionName = 'deleteGroupProcess';
+
+            if (response['count'] == 1) {
+                if (!confirm("1 process left, do you want to delete group?")) {
+                    return false;
+                }
+                actionName = 'deleteProcess';
+            }
+
+            call(actionName);
+        });
+
+        function call(actionType) {
+            $.post('/supervisor/default/process-config-control', {
+                actionType: actionType,
+                groupName : groupName
+            }, responseHandler);
+        }
     };
 
     this.showLog = function(event)
@@ -128,6 +172,8 @@ function SupervisorManager()
             'click', '.supervisorControl', self.supervisorControl
         ).on(
             'click', '.groupControl [data-action]', self.groupControl
+        ).on(
+            'click', '.groupControl [data-group-process-delete]', self.groupProcessDelete
         ).on(
             'click', '.processList .showLog', self.showLog
         );
