@@ -50,7 +50,7 @@ function SupervisorManager()
             }
         }
 
-        $.post('/supervisor/default/supervisor-control', {
+        $.post(location.pathname + '/default/supervisor-control', {
             actionType: actionType
         }, responseHandler);
     };
@@ -62,11 +62,12 @@ function SupervisorManager()
      */
     this.processControl = function(event)
     {
+        console.log(location.pathname);
         var processName = $(this).data('process-name'),
 
             actionType = $(this).data('action-type');
 
-        $.post('/supervisor/default/process-control', {
+        $.post(location.pathname + '/default/process-control', {
             processName: processName,
             actionType: actionType
         }, responseHandler);
@@ -79,10 +80,10 @@ function SupervisorManager()
      */
     this.groupControl = function(event)
     {
-        var actionUrl = '/supervisor/default/group-control';
+        var actionUrl = location.pathname + '/default/group-control';
 
         if ($(event.currentTarget).hasClass('processConfigControl')) {
-            actionUrl = '/supervisor/default/process-config-control';
+            actionUrl = location.pathname + '/default/process-config-control';
         }
 
         var actionType  = $(this).data('action'),
@@ -109,7 +110,7 @@ function SupervisorManager()
     {
         var groupName = $(this).parents('.groupControl').data('groupName');
 
-        $.post('/supervisor/default/count-group-processes', {
+        $.post(location.pathname + '/default/count-group-processes', {
             groupName: groupName
         }).done(function(response) {
 
@@ -126,7 +127,7 @@ function SupervisorManager()
         });
 
         function call(actionType) {
-            $.post('/supervisor/default/process-config-control', {
+            $.post(location.pathname + '/default/process-config-control', {
                 actionType: actionType,
                 groupName : groupName
             }, responseHandler);
@@ -139,7 +140,7 @@ function SupervisorManager()
 
             logType = $(this).data('log-type');
 
-        $.post('/supervisor/default/get-process-log', {
+        $.post(location.pathname + '/default/get-process-log', {
             processName: processName,
             logType: logType
         }, function(response) {
@@ -180,6 +181,6 @@ function SupervisorManager()
     };
 }
 
-$(document).on('ready', function() {
+$(document).ready(function() {
     (new SupervisorManager()).init();
 });
