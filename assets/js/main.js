@@ -180,6 +180,6 @@ function SupervisorManager()
     };
 }
 
-$(document).on('ready', function() {
+$(document).ready(function() {
     (new SupervisorManager()).init();
 });
