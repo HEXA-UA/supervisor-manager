@@ -100,7 +100,8 @@ class Connection extends Component implements ConnectionInterface
                 ? $error->getTrace()[0]['args'][0] : 'Unknown';
 
             throw new SupervisorException(
-                'Method: ' . $methodName . ' was not found in supervisor RPC API.'
+                'Supervisor error: '.$error->getMessage()
+                //'Method: ' . $methodName . ' was not found in supervisor RPC API.'
             );
         }
     }
