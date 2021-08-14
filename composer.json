@@ -24,10 +24,5 @@
         "psr-4": {
             "supervisormanager\\": ""
         }
-    },
-    "config": {
-        "github-oauth": {
-            "github.com": "6caa717c5282eaa67e98a70add5dd0d1e10525bb"
-        }
     }
 }
