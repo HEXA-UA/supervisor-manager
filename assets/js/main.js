@@ -66,7 +66,7 @@ function SupervisorManager()
 
             actionType = $(this).data('action-type');
 
-        $.post(supervisorManager.urls.supervisorControl, {
+        $.post(supervisorManager.urls.processControl, {
             processName: processName,
             actionType: actionType
         }, responseHandler);
