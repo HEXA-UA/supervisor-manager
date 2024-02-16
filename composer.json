@@ -1,5 +1,5 @@
 {
-    "name": "hexa/supervisor-manager",
+    "name": "mootensai/supervisor-manager",
     "description": "Supervisor manager module for Yii2",
     "type": "yii2-extension",
     "keywords": ["yii2","supervisor","supervisor-manager"],
@@ -18,16 +18,11 @@
     },
     "require-dev": {
         "phpunit/phpunit": "5.1.*",
-        "mikey179/vfsStream": "~1"
+        "mikey179/vfsstream": "~1"
     },
     "autoload": {
         "psr-4": {
             "supervisormanager\\": ""
-        }
-    },
-    "config": {
-        "github-oauth": {
-            "github.com": "6caa717c5282eaa67e98a70add5dd0d1e10525bb"
         }
     }
 }

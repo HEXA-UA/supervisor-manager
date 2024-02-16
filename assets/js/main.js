@@ -50,7 +50,7 @@ function SupervisorManager()
             }
         }
 
-        $.post('/supervisor/default/supervisor-control', {
+        $.post(supervisorManager.urls.supervisorControl, {
             actionType: actionType
         }, responseHandler);
     };
@@ -66,7 +66,7 @@ function SupervisorManager()
 
             actionType = $(this).data('action-type');
 
-        $.post('/supervisor/default/process-control', {
+        $.post(supervisorManager.urls.processControl, {
             processName: processName,
             actionType: actionType
         }, responseHandler);
@@ -79,10 +79,10 @@ function SupervisorManager()
      */
     this.groupControl = function(event)
     {
-        var actionUrl = '/supervisor/default/group-control';
+        var actionUrl = supervisorManager.urls.supervisorControl;
 
         if ($(event.currentTarget).hasClass('processConfigControl')) {
-            actionUrl = '/supervisor/default/process-config-control';
+            actionUrl = supervisorManager.urls.processConfigControl;
         }
 
         var actionType  = $(this).data('action'),
@@ -109,7 +109,7 @@ function SupervisorManager()
     {
         var groupName = $(this).parents('.groupControl').data('groupName');
 
-        $.post('/supervisor/default/count-group-processes', {
+        $.post(supervisorManager.urls.countGroupProcesses, {
             groupName: groupName
         }).done(function(response) {
 
@@ -126,7 +126,7 @@ function SupervisorManager()
         });
 
         function call(actionType) {
-            $.post('/supervisor/default/process-config-control', {
+            $.post(supervisorManager.urls.processConfigControl, {
                 actionType: actionType,
                 groupName : groupName
             }, responseHandler);
@@ -139,7 +139,7 @@ function SupervisorManager()
 
             logType = $(this).data('log-type');
 
-        $.post('/supervisor/default/get-process-log', {
+        $.post(supervisorManager.urls.getProcessLog, {
             processName: processName,
             logType: logType
         }, function(response) {
